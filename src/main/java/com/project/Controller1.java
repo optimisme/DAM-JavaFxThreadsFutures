@@ -7,11 +7,12 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Controller1 {
+public class Controller1 implements initialize {
 
     @FXML
     private Button button0, button1;
@@ -19,6 +20,13 @@ public class Controller1 {
     private ImageView img;
     @FXML
     private AnchorPane container;
+    @FXML
+    private Label loading;
+
+    @FXML
+    public void initialize() {
+        loading.setVisible(false);
+    }
 
     @FXML
     private void animateToView0(ActionEvent event) {
@@ -28,9 +36,12 @@ public class Controller1 {
     @FXML
     private void loadImage() {
         System.out.println("Loading image...");
+        loading.setVisible(true);
+        img.setImage(null);
         loadImageBackground((image) -> {
             System.out.println("Image loaded");
             img.setImage(image);
+            loading.setVisible(false);
         });
     }
 
