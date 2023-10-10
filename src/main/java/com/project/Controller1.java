@@ -70,5 +70,4 @@ public class Controller1 implements initialize {
             callBack.accept(result);
         }, Platform::runLater);
     }
-
 }
